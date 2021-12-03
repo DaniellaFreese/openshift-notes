@@ -1,0 +1,5 @@
+ocpAdmin_accessKeys.csv
+pull-secret.txt 
+openshift-install
+**/openshift-install-linux.tar.gz
+**/install_dir
