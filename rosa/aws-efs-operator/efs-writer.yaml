@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: efs-writer
+spec:
+  volumes:
+  - name: efs-storage-vol
+    persistentVolumeClaim:
+      claimName: pvc-sv1
+  containers:
+  - name: efs-writer
+    image: centos:latest
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do echo 'hello efs' >> /mnt/efs-data/verify-efs && echo 'hello efs' && sleep 30; done;" ]
+    volumeMounts:
+      - mountPath: "/mnt/efs-data"
+        name: efs-storage-vol
